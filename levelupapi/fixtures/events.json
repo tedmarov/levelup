@@ -1,0 +1,22 @@
+[
+    {
+        "model": "levelupapi.event",
+        "pk": 1,
+        "fields": {
+            "event_time": "07/21/2025",
+            "game": 2,
+            "location": "Mushroom Kingdom",
+            "scheduler": 1
+        }
+    },
+    {
+        "model": "levelupapi.event",
+        "pk": 1,
+        "fields": {
+            "event_time": "07/27/2027",
+            "game": 1,
+            "location": "Cul-de-sac",
+            "scheduler": 1
+        }
+    }
+]

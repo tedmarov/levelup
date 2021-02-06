@@ -1,0 +1,25 @@
+[
+    {
+        "model": "levelupapi.game",
+        "pk": 1,
+        "fields": {
+            "gamer": 1,
+            "gametype": 2,
+            "title": "Super Mario Lovers",
+            "description": "This time, the Princess is in the castle",
+            "numbers_of_players": 2
+        }
+    },
+    {
+        "model": "levelupapi.game",
+        "pk": 2,
+        "fields": {
+            "gamer": 1,
+            "gametype": 1,
+            "title": "Plank",
+            "description": "Best played with a Jonny 2x4",
+            "numbers_of_players": 2
+        }
+    }
+
+]
