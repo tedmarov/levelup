@@ -8,3 +8,5 @@ class Game(models.Model):
     title = models.CharField(max_length=75)
     description = models.CharField(max_length=255)
     numbers_of_players = models.IntegerField()
+    maker = models.CharField(max_length=30)
+    skill_level = models.IntegerField()
