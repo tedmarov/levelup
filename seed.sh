@@ -8,4 +8,10 @@ python manage.py loaddata users
 python manage.py loaddata tokens
 python manage.py loaddata gamers
 python manage.py loaddata gametypes
+python manage.py loaddata games
 python manage.py loaddata events
+
+# Create a seed.sh file in your project directory
+# Place the code below in the file.
+# Run chmod +x seed.sh in the terminal.
+# Then run ./seed.sh in the terminal to run the commands.
