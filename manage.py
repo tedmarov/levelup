@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python This comment is to test it at Capital City Computers
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
