@@ -121,6 +121,13 @@ class EventGamerSerializer(serializers.ModelSerializer):
         model = Gamer
         fields = ['user']
 
+class GameSerializer(serializers.ModelSerializer):
+    """JSON serializer for games"""
+
+    class Meta:
+        model = Game
+        fields = ('id', 'title', 'maker', 'number_of_players', 'skill_level')
+
 class EventSerializer(serializers.ModelSerializer):
     """JSON serializer for events"""
     organizer = EventGamerSerializer(many=False)
@@ -129,10 +136,3 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = ('id', 'game', 'organizer', 'description', 'date', 'time')
-
-class GameSerializer(serializers.ModelSerializer):
-    """JSON serializer for games"""
-
-    class Meta:
-        model = Game
-        fields = ('id', 'title', 'maker', 'number_of_players', 'skill_level')
