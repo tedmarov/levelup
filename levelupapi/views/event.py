@@ -8,7 +8,6 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from levelupapi.models import Game, Event, Gamer, EventGamer
-from levelupapi.views.game import GameSerializer
 
 
 class Events(ViewSet):
@@ -118,37 +117,6 @@ class Events(ViewSet):
             events, many=True, context={'request': request})
         return Response(serializer.data)
 
-class EventUserSerializer(serializers.ModelSerializer):
-    """JSON serializer for event organizer's related Django user"""
-    
-    class Meta:
-        model = User
-        fields = ['first_name', 'last_name', 'email']
-
-class EventGamerSerializer(serializers.ModelSerializer):
-    """JSON serializer for event organizer"""
-    user = EventUserSerializer(many=False)
-
-    class Meta:
-        model = Gamer
-        fields = ['user']
-
-class GameSerializer(serializers.ModelSerializer):
-    """JSON serializer for games"""
-
-    class Meta:
-        model = Game
-        fields = ('id', 'title', 'maker', 'number_of_players', 'skill_level')
-
-class EventSerializer(serializers.ModelSerializer):
-    """JSON serializer for events"""
-    organizer = EventGamerSerializer(many=False)
-    game = GameSerializer(many=False)
-
-    class Meta:
-        model = Event
-        fields = ('id', 'game', 'organizer', 'description', 'date', 'time', 'joined')
-
     @action(methods=['post', 'delete'], detail=True)
     def signup(self, request, pk=None):
         """Managing gamers signing up for events"""
@@ -212,4 +180,33 @@ class EventSerializer(serializers.ModelSerializer):
         # the method is not supported
         return Response({}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
-        
+class EventUserSerializer(serializers.ModelSerializer):
+    """JSON serializer for event organizer's related Django user"""
+    
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+
+class EventGamerSerializer(serializers.ModelSerializer):
+    """JSON serializer for event organizer"""
+    user = EventUserSerializer(many=False)
+
+    class Meta:
+        model = Gamer
+        fields = ['user']
+
+class GameSerializer(serializers.ModelSerializer):
+    """JSON serializer for games"""
+
+    class Meta:
+        model = Game
+        fields = ('id', 'title', 'maker', 'number_of_players', 'skill_level')
+
+class EventSerializer(serializers.ModelSerializer):
+    """JSON serializer for events"""
+    organizer = EventGamerSerializer(many=False)
+    game = GameSerializer(many=False)
+
+    class Meta:
+        model = Event
+        fields = ('id', 'game', 'organizer', 'description', 'date', 'time', 'joined')
